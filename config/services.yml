@@ -1,0 +1,41 @@
+services:
+    tyrghen.newspage.controller.main:
+        class: tyrghen\newspage\controller\main_controller
+        arguments:
+            - '@config'
+            - '@controller.helper'
+            - '@template'
+            - '@language'
+            - '@auth'
+            - '@user'
+            - '@tyrghen.newspage.core.common'
+
+    tyrghen.newspage.controller.acp:
+        class: tyrghen\newspage\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@tyrghen.newspage.core.common'
+
+    tyrghen.newspage.listener:
+        class: tyrghen\newspage\event\main_listener
+        arguments:
+            - '@config'
+            - '@language'
+            - '@controller.helper'
+            - '@template'
+            - '@request'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }
+
+    tyrghen.newspage.core.common:
+        class: tyrghen\newspage\core\common
+        arguments:
+            - '@auth'
+            - '@user'
+            - '@dbal.conn'

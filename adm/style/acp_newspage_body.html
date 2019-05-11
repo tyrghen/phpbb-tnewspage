@@ -1,0 +1,55 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_TNEWSPAGE_TITLE') }}</h1>
+
+{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+<form id="tyrghen_newspage_acp" name="tyrghen_newspage_acp" method="post" action="{{ U_ACTION }}">
+
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="tyrghen_newspage_active">{{ lang('ACP_TNEWSPAGE_ISACTIVE') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_newspage_active" value="1"{% if TYRGHEN_TNEWSPAGE_ISACTIVE %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_newspage_active" value="0"{% if not TYRGHEN_TNEWSPAGE_ISACTIVE %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_newspage_debug">{{ lang('ACP_TNEWSPAGE_DEBUG') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_newspage_debug" value="1"{% if TYRGHEN_TNEWSPAGE_DEBUG %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_newspage_debug" value="0"{% if not TYRGHEN_TNEWSPAGE_DEBUG %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_newspage_title">{{ lang('ACP_TNEWSPAGE_TITLE') ~ lang('COLON') }}</label></dt>
+			<dd><input type="text" name="tyrghen_newspage_title" value="{{ TYRGHEN_TNEWSPAGE_TITLE }}"/></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_newspage_has_menu">{{ lang('ACP_TNEWSPAGE_HAS_MENU') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_newspage_has_menu" value="1"{% if TYRGHEN_TNEWSPAGE_DEBUG %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_newspage_has_menu" value="0"{% if not TYRGHEN_TNEWSPAGE_DEBUG %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_newspage_root_forum">{{ lang('ACP_TNEWSPAGE_ROOTFORUM') ~ lang('COLON') }}</label></dt>
+			<dd><select id="forum" name="tyrghen_newspage_root_forum" value="{{ TYRGHEN_TNEWSPAGE_ROOTFORUM }}">{{ TYRGHEN_TNEWSPAGE_NEWSFORUMS }}</select></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_newspage_topic_count">{{ lang('ACP_TNEWSPAGE_TOPICCOUNT') ~ lang('COLON') }}</label></dt>
+			<dd><input type="text" name="tyrghen_newspage_topic_count" value="{{ TYRGHEN_TNEWSPAGE_TOPIC_COUNT }}"/></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_newspage_slider">{{ lang('ACP_TNEWSPAGE_SLIDER') ~ lang('COLON') }}</label></dt>
+			<dd><textarea name="tyrghen_newspage_slider" id="tyrghen_newspage_slider" rows="5" cols="40">{{ TYRGHEN_TNEWSPAGE_SLIDER }}</textarea></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}

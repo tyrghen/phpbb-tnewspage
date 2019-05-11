@@ -1,0 +1,9 @@
+tyrghen_newspage_controller:
+    path: /tnewspage
+    defaults: { _controller: tyrghen.newspage.controller.main:handle, id: 0 }
+
+tyrghen_newspage_controller:
+    path: /tnewspage/{id}
+    defaults: { _controller: tyrghen.newspage.controller.main:handle, id: 0 }
+    requirements:
+        id: \d+

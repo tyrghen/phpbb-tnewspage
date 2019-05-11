@@ -1,0 +1,54 @@
+{% include 'overall_header.html' %}
+
+{% for message in TYRGHEN_TNEWSPAGE_TOPICS %}
+<div class="forabg tnewspage">
+    <div class="inner">
+        <ul class="topiclist">
+            <li class="header">
+                <dl class="row-item">
+                    <dd>{{ message.topic_title }}</dd>
+                </dl>
+            </li>
+        </ul>        
+        <ul class="topiclist forums">
+            <li class="row">
+                <dl class="row-item">
+                    <dd>
+                        <div class="tnews-content">
+                            <p class="tnews-date">
+                                <span class="responsive-hide">{{ TYRGHEN_TNEWSPAGE_POSTBY }} <strong>{{ message.username }}</strong> &raquo; </span>{{ message.post_time|date("d M Y") }}
+                            </p>
+                            <div class="tnews-text">{{ message.content }}</div>
+                        </div>                    
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endfor %}
+
+{% if TYRGHEN_TNEWSPAGE_DEBUG > 0 %}
+<div class="forabg">
+        <div class="inner">
+        <ul class="topiclist">
+            <li class="header">
+                <dl class="row-item">
+                    <dd>Debug message</dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="topiclist forums">
+            <li class="row">
+                <dl class="row-item">
+                    <dd>
+                    {{ TYRGHEN_TNEWSPAGE_DEBUG_MSG }}
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+{% include 'overall_footer.html' %}
